@@ -1,0 +1,358 @@
+:root {
+  font-family: 'Noto Sans', system-ui;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.75);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 80vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e7e6e1;
+  background-image: url('/src/assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(231, 230, 225, 0.1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  background-color: #5C4325;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  margin: 4.5rem 0 2rem 0;
+  padding: 2rem;
+  background: #ffffffcc;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0001;
+  flex: 1 0 auto;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  background: #4A90E2;
+  color: #fff;
+  padding: 0.75em 1.5em;
+  box-shadow: 0 2px 8px #0002;
+  margin-bottom: 0;
+}
+
+.navbar-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-logo {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.75em;
+  box-shadow: 0 2px 8px #0002;
+  background: #fff;
+  vertical-align: middle;
+}
+
+.visitor-counter {
+  margin-bottom: 1rem;
+  font-size: 1.5em;
+  color: #282727;
+  padding: 0.5rem;
+}
+
+.audio-list ul {
+  list-style: none;
+  padding: 0;
+  color: #000;
+}
+
+.audio-list li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Controls at top */
+.controls-top {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.controls-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.category-section {
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-section h3 {
+  margin-bottom: 0.5rem;
+  color: #9da9a5;
+}
+
+.category-section ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.category-section li {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+button.app-btn {
+  background: #42b883;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button.app-btn:hover {
+  background: #2c8c6b;
+}
+
+.control-btn {
+  background: #93B0F8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4em 1.2em;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 200px;
+}
+
+.category-btn {
+  background: #E4F4FB;
+  color: #00093B;
+  border: none;
+  border-radius: 15px;
+  padding: 0.4em 1.2em;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 0.7em;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 40vw;
+}
+.category-btn:hover {
+  background: #1a76c1;
+}
+
+.audio-btn {
+  position: relative;
+}
+
+.audio-btn button {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 15px;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+label {
+  font-size: 1em;
+  margin-left: 0.5em;
+  color: #00093B;
+  background: transparent;
+}
+
+.audio-btn button:hover {
+  background: #5C4325;
+  color: #f0f0f0
+}
+
+.footer {
+  background: #f5f5f5;
+  color: #333;
+  text-align: center;
+  padding: 1em 0;
+  font-size: 0.95em;
+  border-top: 1px solid #e0e0e0;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+.footer a {
+  color: #4279b8;
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    min-width: 100vw;
+    padding: 0;
+  }
+  #app, .container {
+    max-width: 100vw;
+    min-width: 0;
+    padding: 0.5em;
+    box-sizing: border-box;
+  }
+  .navbar {
+    flex-direction: row;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+  }
+  .navbar-logo {
+    width: 2em;
+    height: 2em;
+    margin-right: 0.5em;
+  }
+  .navbar-title {
+    font-size: 1.1em;
+  }
+  .controls-row, .category-section ul {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .control-btn, .category-btn, .audio-btn button {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em 0.5em;
+  }
+  .footer {
+    font-size: 0.85em;
+    padding: 0.5em 0.2em;
+  }
+  .side-img {
+    display: none;
+  }
+}
+
+.now-playing {
+  font-size: 1.1em;
+  margin: 1rem 0 1rem 0;
+  color: #000;
+}
+
+.slogan-section {
+  font-size: 2em;
+  color: #5C4325;
+  margin: 0.5em 0 0.5em 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.new-flag {
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  display: inline-block;
+  background: #ff5252;
+  color: #fff;
+  font-size: 0.65em;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 0.05em 0.4em;
+  letter-spacing: 1px;
+  box-shadow: 0 1px 4px #0002;
+  z-index: 2;
+  pointer-events: none;
+}
