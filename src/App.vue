@@ -15,6 +15,8 @@ const {
   slogan,
   fileCount,
   lastModified,
+  volume,
+  setVolume,
 } = useAppLogic();
 </script>
 
@@ -38,6 +40,12 @@ const {
         <label><input type="checkbox" v-model="continueRandom" /> 连续老馋</label>
         <label><input type="checkbox" v-model="loopAudio" /> 循环老馋</label>
         <label><input type="checkbox" v-model="allowMultiple" /> 多重老馋</label>
+      </div>
+      <div class="controls-row volume-row">
+        <label for="volume-slider">音量：</label>
+        <input id="volume-slider" type="range" min="0" max="1" step="0.1" :value="volume"
+          @input="setVolume($event.target.value)" />
+        <span>{{ Math.round(volume * 100) }}%</span>
       </div>
       <div class="now-playing">
         <span v-if="nowPlaying.length === 0">🦦正在播放: 无</span>

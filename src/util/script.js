@@ -36,6 +36,7 @@ async function fetchFileCount() {
 }
 
 export function useAppLogic() {
+  const volume = ref(1);
   const byCategory = computed(() => {
     const groups = {};
     for (const audio of audioList.value) {
@@ -82,6 +83,14 @@ export function useAppLogic() {
 
   const nowPlayingPaths = ref([]);
 
+  function setVolume(val) {
+    const v = typeof val === 'string' ? parseFloat(val) : val;
+    volume.value = v;
+    Object.values(audioElements).forEach((aud) => {
+      aud.volume = v;
+    });
+  }
+
   function playAudio(path) {
     if (!allowMultiple.value) {
       stopAll();
@@ -96,6 +105,9 @@ export function useAppLogic() {
       };
       audioElements[path].onpause = updateNowPlaying;
       audioElements[path].onplay = updateNowPlaying;
+      audioElements[path].volume = volume.value;
+    } else {
+      audioElements[path].volume = volume.value;
     }
     audioElements[path].loop = loopAudio.value;
     audioElements[path].currentTime = 0;
@@ -189,5 +201,7 @@ export function useAppLogic() {
     slogan,
     fileCount,
     lastModified,
+    volume,
+    setVolume,
   };
 }

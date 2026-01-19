@@ -144,7 +144,6 @@ button:focus-visible {
   gap: 1rem;
 }
 
-/* Controls at top */
 .controls-top {
   margin-bottom: 2rem;
   display: flex;
@@ -211,6 +210,21 @@ button.app-btn:hover {
   cursor: pointer;
   transition: background 0.2s;
   width: 200px;
+}
+
+.volume-row {
+  gap: 0.5em;
+  margin-top: 0.5em;
+}
+
+.volume-row span {
+  display: inline-block;
+  width: 50px;
+}
+
+#volume-slider {
+  width: 120px;
+  accent-color: #646cff;
 }
 
 .category-btn {
