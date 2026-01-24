@@ -8,11 +8,7 @@ async function fetchLastModified() {
     const res = await fetch("/api/lastmod");
     const data = await res.json();
     if (data.lastModified) {
-      const d = new Date(data.lastModified);
-      const yyyy = d.getFullYear();
-      const mm = String(d.getMonth() + 1).padStart(2, "0");
-      const dd = String(d.getDate()).padStart(2, "0");
-      lastModified.value = `${yyyy}-${mm}-${dd}`;
+      lastModified.value = data.lastModified;
     } else {
       lastModified.value = "";
     }
@@ -84,7 +80,7 @@ export function useAppLogic() {
   const nowPlayingPaths = ref([]);
 
   function setVolume(val) {
-    const v = typeof val === 'string' ? parseFloat(val) : val;
+    const v = typeof val === "string" ? parseFloat(val) : val;
     volume.value = v;
     Object.values(audioElements).forEach((aud) => {
       aud.volume = v;

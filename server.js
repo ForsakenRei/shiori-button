@@ -48,7 +48,7 @@ app.get("/api/file-count", (req, res) => {
   });
 });
 
-//use modified date of audioList.json as update timestamp
+//use latest dateAdded in audioList.json as update timestamp
 app.get("/api/lastmod", (req, res) => {
   const audioListPath = path.join(
     __dirname,
@@ -56,11 +56,22 @@ app.get("/api/lastmod", (req, res) => {
     "audio",
     "audioList.json",
   );
-  fs.stat(audioListPath, (err, stats) => {
+  fs.readFile(audioListPath, "utf-8", (err, data) => {
     if (err) {
       res.status(500).json({ error: "File not found" });
-    } else {
-      res.json({ lastModified: stats.mtime });
+      return;
+    }
+    try {
+      const list = JSON.parse(data);
+      const latest = list.reduce((max, item) => {
+        if (item.dateAdded && (!max || item.dateAdded > max)) {
+          return item.dateAdded;
+        }
+        return max;
+      }, null);
+      res.json({ lastModified: latest || null });
+    } catch (e) {
+      res.status(500).json({ error: "Invalid JSON" });
     }
   });
 });
