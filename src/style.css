@@ -34,6 +34,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   position: relative;
 }
 
@@ -97,15 +98,25 @@ button:focus-visible {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  right: 0;
   z-index: 100;
   display: flex;
   align-items: center;
-  background: #4A90E2;
+  background: #4A90E2CC;
   color: #fff;
   padding: 0.75em 1.5em;
   box-shadow: 0 2px 8px #0002;
-  margin-bottom: 0;
+  justify-content: space-between;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+.navbar-right {
+  display: flex;
+  align-items: center;
+
 }
 
 .navbar-title {
@@ -113,12 +124,23 @@ button:focus-visible {
   font-weight: bold;
 }
 
-.navbar-logo {
+.navbar-logo.left {
   width: 2.5em;
   height: 2.5em;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 0.75em;
+  margin-right: 0.5em;
+  box-shadow: 0 2px 8px #0002;
+  background: #fff;
+  vertical-align: middle;
+}
+
+.navbar-logo.right {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 0.5em;
   box-shadow: 0 2px 8px #0002;
   background: #fff;
   vertical-align: middle;
@@ -271,7 +293,7 @@ label {
 }
 
 .footer {
-  background: #f5f5f5;
+  background: #f5f5f5CC;
   color: #333;
   text-align: center;
   padding: 1em 0;

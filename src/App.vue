@@ -23,10 +23,18 @@ const {
 <template>
   <div class="container">
     <nav class="navbar">
-      <a href="https://space.bilibili.com/1609526545" target="_blank" rel="noopener noreferrer">
-        <img src="/src/assets/logo.png" alt="logo" class="navbar-logo" />
-      </a>
-      <span class="navbar-title">海獭按钮</span>
+      <div class="navbar-left">
+        <a href="https://space.bilibili.com/1609526545" target="_blank" rel="noopener noreferrer">
+          <img src="/src/assets/shiori.png" alt="logo" class="navbar-logo left" />
+        </a>
+        <span class="navbar-title">海獭按钮</span>
+      </div>
+      <div class="navbar-right">
+        <span class="navbar-title">獭獭栞的家</span>
+        <a href="https://www.shiori.xin/" target="_blank" rel="noopener noreferrer">
+          <img src="/src/assets/ttk.png" alt="logo" class="navbar-logo right" />
+        </a>
+      </div>
     </nav>
     <div class="slogan-section" v-if="slogan">{{ slogan }}</div>
     <hr>
