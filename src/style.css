@@ -78,6 +78,25 @@ button:focus-visible {
   padding: 2em;
 }
 
+.to-top-btn {
+  position: fixed;
+  bottom: 10%;
+  right: 1%;
+  z-index: 1000;
+  background: #fff;
+  border: 1px dotted #000;
+  color: #000;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  opacity: 0.7;
+  padding: 0.5em;
+}
+.to-top-btn:hover {
+  background: #f0f0f0;
+  opacity: 1;
+}
+
 #app {
   max-width: 1800px;
   margin: 0 auto;
@@ -361,6 +380,24 @@ label {
     font-size: 0.85em;
     padding: 0.5em 0.2em;
   }
+  /* .to-top-btn {
+    position: fixed;
+    bottom: 10%;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    border: 1px dotted #000;
+    color: #000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: opacity 0.2s, background 0.2s;
+    opacity: 0.7;
+    padding: 0.5em;
+  }
+  .to-top-btn:hover {
+    background: #f0f0f0;
+    opacity: 1;
+  } */
 }
 
 .now-playing {

@@ -31,7 +31,7 @@ async function fetchFileCount() {
   }
 }
 
-export function useAppLogic() {
+export function pageLogic() {
   const volume = ref(1);
   const byCategory = computed(() => {
     const groups = {};

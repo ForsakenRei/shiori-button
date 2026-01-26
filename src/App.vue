@@ -1,5 +1,8 @@
 <script setup>
-import { useAppLogic } from './util/script.js';
+import { pageLogic } from './util/script.js';
+import { backTop } from './util/backtop.js';
+
+const { showTopButton, hovering, scrollToTop } = backTop();
 
 const {
   byCategory,
@@ -17,7 +20,7 @@ const {
   lastModified,
   volume,
   setVolume,
-} = useAppLogic();
+} = pageLogic();
 </script>
 
 <template>
@@ -83,4 +86,8 @@ const {
         rel="noopener noreferrer">Github</a>
     </div>
   </footer>
+  <button v-show="showTopButton" class="to-top-btn" @click="scrollToTop" @mouseenter="hovering = true"
+    @mouseleave="hovering = false" :style="{ opacity: hovering ? 1 : 0.7 }">
+    ⬆
+  </button>
 </template>
