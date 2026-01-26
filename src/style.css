@@ -348,6 +348,10 @@ label {
     flex-direction: column;
     gap: 0.5em;
   }
+  .controls-row.volume-row {
+    justify-content: center;
+    align-items: center;
+  }
   .control-btn, .category-btn, .audio-btn button {
     width: 100%;
     font-size: 1em;
@@ -356,9 +360,6 @@ label {
   .footer {
     font-size: 0.85em;
     padding: 0.5em 0.2em;
-  }
-  .side-img {
-    display: none;
   }
 }
 
