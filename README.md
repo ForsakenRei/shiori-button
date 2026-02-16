@@ -49,6 +49,12 @@ npm install && npm run build && node server.js
 ```
 生成静态站并启动后端服务器，可通过`server_ip:3001`访问。
 
+如使用Docker部署，只需运行
+```shell
+docker compose up -d
+```
+注：Docker部署目前不支持hot-reload。
+
 ## LICENSE
 
 本项目遵循GNU GENERAL PUBLIC LICENSE Version 3。
