@@ -55,6 +55,10 @@ docker compose up -d
 ```
 注：Docker部署目前不支持hot-reload。
 
+## 响度匹配与背景音消除
+
+将逐步匹配所有音频响度至峰值 -6dB （Peak Amplitude）并使用[UVR](https://github.com/anjok07/ultimatevocalremovergui)去除背景音。
+
 ## LICENSE
 
 本项目遵循GNU GENERAL PUBLIC LICENSE Version 3。
