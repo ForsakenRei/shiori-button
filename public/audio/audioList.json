@@ -362,6 +362,10 @@
   { "path": "audio/嚣张我怎么了.mp3", "category": "嚣张海獭", "displayName": "我怎么了x4", "dateAdded": "2026-02-01"},
   { "path": "audio/嚣张滚吧你.mp3", "category": "嚣张海獭", "displayName": "滚吧你", "dateAdded": "2026-02-01"},
   { "path": "audio/嚣张你不是也没妹妹约吗.mp3", "category": "嚣张海獭", "displayName": "你不是也没妹妹约吗？说上我来了", "dateAdded": "2026-02-01"},
+  { "path": "audio/嚣张ttk不会是怕了吧.mp3", "category": "嚣张海獭", "displayName": "ttk你不会是怕了吧？啊", "dateAdded": "2026-05-31"},
+  { "path": "audio/嚣张ttk跪下.mp3", "category": "嚣张海獭", "displayName": "ttk跪下！ttk？跪下！", "dateAdded": "2026-05-31"},
+  { "path": "audio/嚣张你栞神的大手叫你不要惹我.mp3", "category": "嚣张海獭", "displayName": "你栞神的大手叫你不要惹我", "dateAdded": "2026-05-31"},
+  { "path": "audio/嚣张还有你妈.mp3", "category": "嚣张海獭", "displayName": "还有你妈，哈哈哈哈", "dateAdded": "2026-05-31"},
   { "path": "audio/破防去死去死吧.mp3", "category": "破防海獭", "displayName": "去死去死吧", "dateAdded": "2026-01-17"},
   { "path": "audio/破防去死吧捅死你.mp3", "category": "破防海獭", "displayName": "去死吧捅死你", "dateAdded": "2026-01-17"},
   { "path": "audio/破防杀了你杀了你.mp3", "category": "破防海獭", "displayName": "杀了你杀了你", "dateAdded": "2026-01-17"},
@@ -585,7 +589,7 @@
   { "path": "audio/方言豫得劲儿02.mp3", "category": "方言", "displayName": "得劲儿02（豫）", "dateAdded": "2026-02-22"},
   { "path": "audio/方言豫全都飞走吧.mp3", "category": "方言", "displayName": "全都飞走吧（豫）", "dateAdded": "2026-02-22"},
   { "path": "audio/方言豫得劲儿魔法吟唱.mp3", "category": "方言", "displayName": "得劲儿魔法吟唱（豫）", "dateAdded": "2026-02-22"},
-  { "path": "audio/经典有一只海獭.mp3", "category": "主播自己听听", "displayName": "有这么一只可爱的海獭", "dateAdded": "2026-01-18"},
+  { "path": "audio/经典有一只海獭.mp3", "category": "主播自己听听", "displayName": "有这么一只可爱的海獭（完整版）", "dateAdded": "2026-01-18"},
   { "path": "audio/经典好好休息好好吃饭.mp3", "category": "主播自己听听", "displayName": "要好好休息好好吃饭", "dateAdded": "2026-01-18"},
   { "path": "audio/经典不要不睡觉.mp3", "category": "主播自己听听", "displayName": "不要不睡觉看管人的直播", "dateAdded": "2026-01-18"}
 ]
