@@ -33,8 +33,8 @@ const {
         <span class="navbar-title">海獭按钮</span>
       </div>
       <div class="navbar-right">
-        <span class="navbar-title">獭獭栞的家</span>
-        <a href="https://www.shiori.xin/" target="_blank" rel="noopener noreferrer">
+        <span class="navbar-title">獭獭栞的家(Mirror)</span>
+        <a href="https://shiori.dev/" target="_blank" rel="noopener noreferrer">
           <img src="/src/assets/ttk.png" alt="logo" class="navbar-logo right" />
         </a>
       </div>
