@@ -30,10 +30,11 @@ const {
         <a href="https://space.bilibili.com/1609526545" target="_blank" rel="noopener noreferrer">
           <img src="/src/assets/shiori.png" alt="logo" class="navbar-logo left" />
         </a>
-        <span class="navbar-title">海獭按钮</span>
+        <a class="navbar-title" href="https://space.bilibili.com/1609526545" target="_blank"
+          rel="noopener noreferrer">海獭按钮</a>
       </div>
       <div class="navbar-right">
-        <span class="navbar-title">獭獭栞的家(Mirror)</span>
+        <a class="navbar-title" href="https://shiori.dev/" target="_blank" rel="noopener noreferrer">獭獭栞的家(Mirror)</a>
         <a href="https://shiori.dev/" target="_blank" rel="noopener noreferrer">
           <img src="/src/assets/ttk.png" alt="logo" class="navbar-logo right" />
         </a>
