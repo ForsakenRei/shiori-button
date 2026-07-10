@@ -9,30 +9,106 @@ const PORT = process.env.PORT || 3001;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const COUNTER_FILE = path.join(__dirname, "visitorCount.json");
+const UMAMI_BASE_URL = process.env.UMAMI_BASE_URL?.replace(/\/$/, "");
+const UMAMI_WEBSITE_ID = process.env.UMAMI_WEBSITE_ID;
+const UMAMI_TOKEN = process.env.UMAMI_TOKEN;
+const UMAMI_START_AT = toMilliseconds(process.env.UMAMI_START_AT, 0);
 
-function getVisitorCount() {
-  try {
-    const data = fs.readFileSync(COUNTER_FILE, "utf-8");
-    return JSON.parse(data).count || 0;
-  } catch {
-    return 0;
+function toMilliseconds(value, fallback) {
+  if (value === undefined || value === null || value === "") {
+    return fallback;
   }
+
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value < 1e12 ? value * 1000 : value;
+  }
+
+  const numericValue = Number(value);
+  if (Number.isFinite(numericValue)) {
+    return numericValue < 1e12 ? numericValue * 1000 : numericValue;
+  }
+
+  const parsedDate = Date.parse(value);
+  return Number.isNaN(parsedDate) ? fallback : parsedDate;
 }
 
-function setVisitorCount(count) {
-  fs.writeFileSync(COUNTER_FILE, JSON.stringify({ count }), "utf-8");
+function getUmamiAuthHeader() {
+  if (UMAMI_TOKEN) {
+    return `Bearer ${UMAMI_TOKEN}`;
+  }
+  return null;
 }
 
-app.get("/api/visitor-count", (req, res) => {
-  res.json({ count: getVisitorCount() });
+async function fetchUmamiVisitors() {
+  if (!UMAMI_BASE_URL) {
+    throw new Error("UMAMI_BASE_URL is not configured");
+  }
+
+  if (!UMAMI_WEBSITE_ID) {
+    throw new Error("UMAMI_WEBSITE_ID is not configured");
+  }
+
+  const authHeader = getUmamiAuthHeader();
+  if (!authHeader) {
+    throw new Error("UMAMI_TOKEN is not configured");
+  }
+
+  const params = new URLSearchParams({
+    startAt: String(UMAMI_START_AT),
+    endAt: String(Date.now()),
+  });
+
+  const requestUrl = `${UMAMI_BASE_URL}/api/websites/${UMAMI_WEBSITE_ID}/stats?${params.toString()}`;
+
+  const response = await fetch(requestUrl, {
+    headers: {
+      Accept: "application/json",
+      Authorization: authHeader,
+    },
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    if (response.status === 404) {
+      throw new Error(
+        `Umami API request failed (404) for ${requestUrl}. ` +
+          "This base URL does not appear to expose the Umami admin API. " +
+          "Point UMAMI_BASE_URL at the actual Umami API origin, not the public site URL.",
+      );
+    }
+    throw new Error(
+      `Umami API request failed (${response.status}): ${errText}`,
+    );
+  }
+
+  const stats = await response.json();
+  if (typeof stats?.visitors !== "number") {
+    throw new Error(
+      "Umami API response does not contain numeric visitors field",
+    );
+  }
+
+  return stats.visitors;
+}
+
+app.get("/api/visitor-count", async (req, res) => {
+  try {
+    const count = await fetchUmamiVisitors();
+    res.json({ count });
+  } catch (error) {
+    console.error("Failed to fetch Umami visitor count:", error);
+    res.status(500).json({ error: "Failed to fetch visitor count from Umami" });
+  }
 });
 
-app.post("/api/visitor-count", (req, res) => {
-  let count = getVisitorCount();
-  count++;
-  setVisitorCount(count);
-  res.json({ count });
+app.post("/api/visitor-count", async (req, res) => {
+  try {
+    const count = await fetchUmamiVisitors();
+    res.json({ count });
+  } catch (error) {
+    console.error("Failed to fetch Umami visitor count:", error);
+    res.status(500).json({ error: "Failed to fetch visitor count from Umami" });
+  }
 });
 
 // get the count of audio files
