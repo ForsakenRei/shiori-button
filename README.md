@@ -14,7 +14,7 @@ __请注意音量__ __请注意音量__ __请注意音量__
 ## 使用说明
 
 1.每次页面刷新会随机选取一句海獭名言用答辩色显示在最上方。\
-2.ttk计数，记录通过不同设备访问海獭按钮的ttk总数。\
+2.致聋ttk计数，依赖Umami统计累计访问海獭按钮的ttk总数。\
 3.随机老馋：从全部语音可用中随机播放一个。\
 4.停止老馋：停止正在播放的所有语音。\
 5.连续老馋：勾选后再使用随机功能，会持续播放直到点击停止。\
@@ -54,6 +54,19 @@ npm install && npm run build && node server.js
 docker compose up -d
 ```
 注：Docker部署目前不支持hot-reload。
+
+### Umami
+
+ttk计数依赖Umami，仅支持self-hosted，参考`.env.example`设置以下环境变量：
+
+```shell
+UMAMI_BASE_URL=http://umami:3000
+UMAMI_WEBSITE_ID=your-website-id
+UMAMI_TOKEN=your-token
+UMAMI_START_AT=0 #optional
+```
+
+本地测试开发其实可以忽略，只是单纯不显示计数而已。
 
 ## 响度匹配与背景音消除
 
