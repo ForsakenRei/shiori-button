@@ -1,12 +1,12 @@
 {
   "name": "shiori-button",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "vite",
-    "dev:backend": "node server.js",
+    "dev:backend": "node --env-file=.env server.js",
     "build": "vite build",
     "preview": "vite preview"
   },

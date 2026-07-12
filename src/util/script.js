@@ -57,23 +57,12 @@ export function pageLogic() {
 
   onMounted(async () => {
     fetchAudioList();
-    if (!localStorage.getItem("visited")) {
-      try {
-        const res = await fetch("/api/visitor-count", { method: "POST" });
-        const data = await res.json();
-        visitorCount.value = data.count;
-        localStorage.setItem("visited", "1");
-      } catch (e) {
-        visitorCount.value = "N/A";
-      }
-    } else {
-      try {
-        const res = await fetch("/api/visitor-count");
-        const data = await res.json();
-        visitorCount.value = data.count;
-      } catch (e) {
-        visitorCount.value = "N/A";
-      }
+    try {
+      const res = await fetch("/api/visitor-count");
+      const data = await res.json();
+      visitorCount.value = data.count;
+    } catch (e) {
+      visitorCount.value = "N/A";
     }
   });
 
