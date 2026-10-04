@@ -111,9 +111,19 @@ app.post("/api/visitor-count", async (req, res) => {
   }
 });
 
+// Prefer the built dist/audio (production) over public/audio (local dev),
+// so the production image only needs to ship dist/ and not a duplicate public/audio.
+function getAudioDir() {
+  const distAudioDir = path.join(__dirname, "dist", "audio");
+  if (fs.existsSync(distAudioDir)) {
+    return distAudioDir;
+  }
+  return path.join(__dirname, "public", "audio");
+}
+
 // get the count of audio files
 app.get("/api/file-count", (req, res) => {
-  const audioDir = path.join(__dirname, "public", "audio");
+  const audioDir = getAudioDir();
   fs.readdir(audioDir, (err, files) => {
     if (err) {
       res.status(500).json({ error: "Directory not found" });
@@ -126,12 +136,7 @@ app.get("/api/file-count", (req, res) => {
 
 //use latest dateAdded in audioList.json as update timestamp
 app.get("/api/lastmod", (req, res) => {
-  const audioListPath = path.join(
-    __dirname,
-    "public",
-    "audio",
-    "audioList.json",
-  );
+  const audioListPath = path.join(getAudioDir(), "audioList.json");
   fs.readFile(audioListPath, "utf-8", (err, data) => {
     if (err) {
       res.status(500).json({ error: "File not found" });
