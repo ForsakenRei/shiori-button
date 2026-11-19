@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 const UMAMI_BASE_URL = process.env.UMAMI_BASE_URL?.replace(/\/$/, "");
 const UMAMI_WEBSITE_ID = process.env.UMAMI_WEBSITE_ID;
-const UMAMI_TOKEN = process.env.UMAMI_TOKEN;
+const UMAMI_API_KEY = process.env.UMAMI_API_KEY;
 const UMAMI_START_AT = toMilliseconds(process.env.UMAMI_START_AT, 0);
 
 function toMilliseconds(value, fallback) {
@@ -33,8 +33,8 @@ function toMilliseconds(value, fallback) {
 }
 
 function getUmamiAuthHeader() {
-  if (UMAMI_TOKEN) {
-    return `Bearer ${UMAMI_TOKEN}`;
+  if (UMAMI_API_KEY) {
+    return `Bearer ${UMAMI_API_KEY}`;
   }
   return null;
 }
@@ -50,7 +50,7 @@ async function fetchUmamiVisitors() {
 
   const authHeader = getUmamiAuthHeader();
   if (!authHeader) {
-    throw new Error("UMAMI_TOKEN is not configured");
+    throw new Error("UMAMI_API_KEY is not configured");
   }
 
   const params = new URLSearchParams({
