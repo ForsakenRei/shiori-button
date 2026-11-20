@@ -62,8 +62,8 @@ ttk计数依赖Umami，仅支持self-hosted，参考`.env.example`设置以下�
 ```shell
 UMAMI_BASE_URL=http://umami:3000
 UMAMI_WEBSITE_ID=your-website-id
-UMAMI_TOKEN=your-token
-UMAMI_START_AT=0 #optional
+UMAMI_API_KEY=your-api-key
+UMAMI_START_AT=0 #optional stats time range, yyyy-mm-dd, 0 for all time
 ```
 
 本地测试开发其实可以忽略，只是单纯不显示计数而已。
